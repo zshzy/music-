@@ -1,0 +1,40 @@
+<view class='pp'>
+  <view class='header'></view>
+  <view class='content'>
+播放器     {{duration}}
+  </view>
+  <view class="footer">
+    <view class='left'>
+    <view> <image class="tupian" src="{{item.url}}" mode='widthFix'></image></view>
+    <view>
+      <view class='sname' bindtap='newPage' ><view >{{item.sname}}</view></view><view class='auth'>{{item.auth}}</view>
+      </view>
+  </view>
+  <view class='right'>
+    <view>
+      <image class='play' hidden="{{isplay?'':'hidden'}}" src="{{play}}" mode='widthFix' ontap="play"></image>
+      <image class='play' hidden="{{isplay?'hidden':''}}" src="{{stop}}" mode='widthFix' ontap="pause"></image>
+    </view>
+    <view><image  class='list' src='{{list}}' mode='widthFix' ontap="showlist"></image></view>
+  </view>
+  </view>
+  <view animation="{{animationData}}" hidden="{{hidden}}" class='dialog'>
+    <view class='zz' ontap="hideModal"></view>
+    <view class='tck'>
+      <view class='mhead'>
+        <view class='mh-l'>
+          <image class='xh' src='{{xh}}' mode='widthFix'></image>循环列表（27）
+        </view>
+      <view class='mh-r' >
+        <image class='xh' src='{{sc}}' mode='widthFix'></image>收藏全部 
+        <image class='xh' src='{{hsz}}' mode='widthFix' ontap="del"></image>
+      </view>
+      </view>
+      <view class='mlist'>
+        <block wx:for="{{items}}" wx:for-index="index"  wx:for-item="item">
+        <view class='mlist-item' ><view class='mname' ontap="playmusic" data-index="{{index}}" >{{item.sname}}（ {{item.auth}} ） <view class="fz">- 尼采</view></view><image class='xh' src="{{shanchu}}"mode='widthFix' data-index="{{index}}" bindtap="delone"></image></view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

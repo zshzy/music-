@@ -1,0 +1,52 @@
+<view class="container">
+<view class='backimg'><image class='back' src="{{item.url}}" mode='scaleToFill'></image></view>
+  <view class='bgplay '>
+  <image src='{{aa}}'></image>
+  <image animation="{{animationa}}" class="changtou  {{isplay?'rotate':''}}" src="{{changtou}}" mode='widthFix'></image>
+  </view>
+    <view class="bgplay1 {{isplay?'':'Rotation'}}">
+  <image animation="{{animationb}}" class="bgimage"  src="{{item.url}}" mode='widthFix'></image>
+  </view>
+  <view class='footer'>
+    <view class='f_header'>
+      <image class='f_h_c' hidden="{{islike?'':'hidden'}}" src="{{icon.like}}" mode='widthFix' bindtap='like'></image>
+      <image class='f_h_c' hidden="{{islike?'hidden':''}}" src="{{icon.love}}" mode='widthFix' bindtap='like'></image>
+      <image class='f_h_c' src="{{icon.down}}" mode='widthFix' bindtap='down'></image>
+      <image bindtap='newPage' class='f_h_c' src="{{icon.comment}}" mode='widthFix'></image>
+      <image class='f_h_c' src="{{icon.sett}}" mode='widthFix' bindtap='showlist'></image>
+    </view>
+    <view class='f_center'>
+      <view>{{currentTime}}</view>
+      <view class='slider'><slider value="{{slider}}" bindchange='slideChange'></slider> </view>
+      <view>{{duration}}</view>
+    </view>
+    <view class='f_bottom'>
+      <image class='f_h_c' src="{{icon.xh_one}}" mode='widthFix' bindtap='qiehuan'></image>
+      <image class='f_h_c' bindtap='prev_one' src="{{icon.prev_one}}" mode='widthFix'></image>
+      <image  hidden="{{isplay?'':'hidden'}}" class='f_h_p' src="{{icon.start_one}}" mode='widthFix' bindtap='playMusic'></image>
+       <image  hidden="{{isplay?'hidden':''}}" class='f_h_p' src="{{icon.stop_one}}" mode='widthFix' bindtap='stopMusic'></image>
+      <image class='f_h_c' bindtap='next_one' src="{{icon.next_one}}" mode='widthFix'></image>
+      <image class='f_h_c' src="{{icon.list_one}}" mode='widthFix' bindtap="showlist"></image>
+    </view>  
+  </view>
+  <!--弹出列表-->
+  <view animation="{{animationData}}" hidden="{{hidden}}" class='dialog'>
+    <view class='zz' ontap="hideModal"></view>
+    <view class='tck'>
+      <view class='mhead'>
+        <view class='mh-l'>
+          <image class='xh' src='{{xh}}' mode='widthFix'></image>循环列表（27）
+        </view>
+      <view class='mh-r' >
+        <image class='xh' src='{{sc}}' mode='widthFix'></image>收藏全部 
+        <image class='xh' src='{{hsz}}' mode='widthFix' ontap="del"></image>
+      </view>
+      </view>
+      <view class='mlist'>
+        <block wx:for="{{items}}" wx:for-index="index"  wx:for-item="item">
+        <view class='mlist-item' ><view class='mname' ontap="playMusic" data-index="{{index}}" >{{item.sname}}（ {{item.auth}} ） <view class="fz">- 尼采</view></view><image class='xh' src="{{shanchu}}"mode='widthFix' data-index="{{index}}" bindtap="delone"></image></view>
+        </block>
+      </view>
+    </view>
+   </view>
+</view>
